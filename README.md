@@ -1,4 +1,11 @@
-# base-vue
+# Base-Vue
+
+Proyecto base con Vue, Vue Router y Vuex.
+
+Para ejecutar el proyecto correctamente deben crear un archivo .env.development.local y un .env.production.local con el siguiente contenido:
+```
+VUE_APP_URL= https://api-balance.herokuapp.com/balance/api/
+```
 
 ## Project setup
 ```

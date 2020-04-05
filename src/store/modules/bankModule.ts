@@ -26,8 +26,9 @@ export default {
     // create: (context, bankData) => {
     //   // stuff to create a new bank on the backend : CRUD CREATE ACTION
     // },
-    read: (context: any) => {
-      return bankService.getBanks().then((response) => {
+    read: async (context: any) => {
+      await bankService.getBanks().then((response: any) => {
+        console.log(response);
         context.commit("setBanks", response.data.data);
       });
     },
