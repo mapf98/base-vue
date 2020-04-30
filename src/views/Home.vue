@@ -9,17 +9,17 @@
           color="success"
           x-large
           :loading="loading"
-          @click="getBanks"
+          @click="getAllUsers"
         >
-          GET Banks
+          GET Users
         </v-btn>
       </v-col>
     </v-row>
     <v-row>
       <v-col class="d-flex flex-wrap justify-center">
         <v-card
-          v-for="bank in banks"
-          :key="bank.bank_id"
+          v-for="user in users"
+          :key="user.user_id"
           color="#385F73"
           dark
           min-width="500"
@@ -27,7 +27,7 @@
           transition="slide-y-transition"
         >
           <v-card-title class="headline text-center">{{
-            bank.bank_name
+            user.user_email
           }}</v-card-title>
         </v-card>
       </v-col>
@@ -43,15 +43,15 @@ import Component from "vue-class-component";
 export default class Home extends Vue {
   loading = false;
 
-  getBanks() {
+  getAllUsers() {
     this.loading = true;
-    this.$store.dispatch("banks/read").then(() => {
+    this.$store.dispatch("users/getAllUsers").then(() => {
       this.loading = false;
     });
   }
 
-  get banks() {
-    return this.$store.state.banks.banks;
+  get users() {
+    return this.$store.state.users.users;
   }
 }
 </script>

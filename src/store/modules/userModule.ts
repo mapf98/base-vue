@@ -1,24 +1,24 @@
 import Vue from "vue";
 
-import bankService from "../../services/bankService";
+import userService from "../../services/userService";
 
 export default {
   namespaced: true,
   // -----------------------------------------------------------------
   state: {
     // Aqui van los atributos
-    banks: [],
+    users: [],
   },
   // -----------------------------------------------------------------
   getters: {
     // getters and computed props
-    collection: (state: any) => state.banks,
+    //collection: (state: any) => state.users,
   },
   // -----------------------------------------------------------------
   mutations: {
     // Aqui se setean los atributos del state
-    setBanks(state: any, banks: []) {
-      Vue.set(state, "banks", banks);
+    setAllUsers(state: {}, users: []) {
+      Vue.set(state, "users", users);
     },
   },
   // -----------------------------------------------------------------
@@ -26,10 +26,10 @@ export default {
     // create: (context, bankData) => {
     //   // stuff to create a new bank on the backend : CRUD CREATE ACTION
     // },
-    read: async (context: any) => {
-      await bankService.getBanks().then((response: any) => {
-        console.log(response);
-        context.commit("setBanks", response.data.data);
+    getAllUsers: async (context: any) => {
+      console.log(typeof context);
+      await userService.getAllUsers().then((response: any) => {
+        context.commit("setAllUsers", response.data);
       });
     },
     // update: (context, bankData) => {
